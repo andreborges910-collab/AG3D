@@ -15,8 +15,7 @@
             <div class="logo-wrapper">
                 <img src="logo.png" alt="AG 3D Studio" class="logo-img">
                 <div class="brand-text">
-                    <span class="main-title">3D STUDIO</span>
-                    <span class="sub-title">PROFESSIONAL PRINTING</span>
+                    <span class="main-title">AG 3D STUDIO</span>
                 </div>
             </div>
         </div>
@@ -28,7 +27,7 @@
             <button class="btn-edit" onclick="prepararEdicao('lEst', 'estados')">✏️</button>
             <button class="btn-del" onclick="apagarItem('lEst', 'estados')">🗑️</button>
         </div>
-        <input type="number" id="tempo" placeholder="Tempo de Impressão (h)">
+        <input type="number" id="tempo" placeholder="Tempo Total de Impressão (h)">
 
         <div class="section-title">2. Máquina e Manutenção</div>
         <select id="lMaq" onchange="selecionar('lMaq', 'vMaqDisplay', 'maquinas')"></select>
@@ -37,7 +36,7 @@
             <button class="btn-edit" onclick="prepararEdicao('lMaq', 'maquinas')">✏️</button>
             <button class="btn-del" onclick="apagarItem('lMaq', 'maquinas')">🗑️</button>
         </div>
-        <input type="number" id="manutencao" placeholder="R$ Manut/h">
+        <input type="number" id="manutencao" placeholder="Custo Manutenção/h (R$)">
 
         <div class="section-title">3. Filamento e Peso</div>
         <select id="lFil" onchange="selecionar('lFil', 'vFilDisplay', 'filamentos')"></select>
@@ -46,7 +45,7 @@
             <button class="btn-edit" onclick="prepararEdicao('lFil', 'filamentos')">✏️</button>
             <button class="btn-del" onclick="apagarItem('lFil', 'filamentos')">🗑️</button>
         </div>
-        <input type="number" id="peso" placeholder="Gramas Usadas (g)">
+        <input type="number" id="peso" placeholder="Peso Final da Peça (g)">
 
         <div class="section-title">4. Margem de Lucro (%)</div>
         <input type="number" id="lucro" placeholder="Ex: 350">
