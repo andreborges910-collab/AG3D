@@ -1,243 +1,41 @@
-:root { 
-    --primary: #00ffcc; 
-    --bg: #0d0d0d; 
-    --card: #1a1a1a; 
-    --text: #ffffff; 
-    --danger: #ff4d4d; 
-}
+:root { --primary: #00ffcc; --bg: #0d0d0d; --card: #1a1a1a; --text: #ffffff; --danger: #ff4d4d; }
 
-/* Base e Scroll */
-body { 
-    font-family: 'Segoe UI', Roboto, sans-serif; 
-    background: var(--bg); 
-    color: var(--text); 
-    padding: 15px; 
-    margin: 0; 
-    display: flex; 
-    justify-content: center; 
-}
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 15px; margin: 0; display: flex; justify-content: center; }
 
-.app-container { 
-    width: 100%; 
-    max-width: 450px; 
-    background: var(--card); 
-    border-radius: 30px; 
-    padding: 25px; 
-    border: 1px solid rgba(0, 255, 204, 0.3); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+.app-container { width: 100%; max-width: 450px; background: var(--card); border-radius: 30px; padding: 25px; border: 1px solid rgba(0, 255, 204, 0.3); }
 
-/* Header e Logo 180px */
-.logo-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-}
+.logo-img { width: 180px; height: auto; }
+.logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding-bottom: 20px; border-bottom: 2px solid var(--primary); margin-bottom: 25px; }
 
-.logo-img {
-    width: 180px; /* Sua logo imponente */
-    height: auto;
-    filter: drop-shadow(0 0 5px rgba(0, 255, 204, 0.4));
-}
+.main-title { font-size: 24px; font-weight: 900; color: white; }
+.section-title { font-size: 11px; color: var(--primary); margin: 15px 0 5px 5px; text-transform: uppercase; font-weight: 900; }
 
-.main-title {
-    font-size: 24px;
-    font-weight: 900;
-    color: white;
-    letter-spacing: 1px;
-}
+.row-ctrl { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+.val-display { flex-grow: 1; padding: 12px; background: #000; border-radius: 12px; color: var(--primary); font-weight: bold; border: 1px solid #333; text-align: center; }
 
-/* Seções e Inputs */
-.section-title {
-    font-size: 11px;
-    color: var(--primary);
-    margin: 18px 0 6px 5px;
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
+select, input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #444; background: #262626; color: white; margin-bottom: 12px; box-sizing: border-box; font-size: 16px; outline: none; }
 
-select, input {
-    width: 100%;
-    padding: 14px;
-    background: #262626;
-    border: 1px solid #333;
-    border-radius: 12px;
-    color: white;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s;
-}
+.btn-edit { background: rgba(0, 255, 204, 0.1); border: 1px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 12px; cursor: pointer; }
+.btn-del { background: rgba(255, 77, 77, 0.1); border: 1px solid var(--danger); color: var(--danger); padding: 12px; border-radius: 12px; cursor: pointer; }
 
-select:focus, input:focus {
-    border-color: var(--primary);
-}
+.btn-calc { width: 100%; padding: 18px; background: var(--primary); color: #000; border: none; border-radius: 15px; font-weight: 900; font-size: 18px; margin-top: 10px; cursor: pointer; }
 
-/* Controles de Linha (Display, Lápis e Lixeira) */
-.row-ctrl {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    margin-bottom: 15px;
-}
+.resultado-lista { background: #000; border-radius: 20px; padding: 20px; margin-top: 20px; border: 1px solid var(--primary); display: none; color: white; text-align: center; }
+.resultado-lista h3 { margin-top: 0; color: white; }
+.res-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px; color: #ddd; }
+#resTotalFinal { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--primary); font-size: 28px; font-weight: 900; color: var(--primary); }
 
-.val-display {
-    flex-grow: 1;
-    padding: 12px;
-    background: #000;
-    border-radius: 12px;
-    color: var(--primary);
-    font-weight: bold;
-    border: 1px solid #333;
-    text-align: center;
-    font-size: 15px;
-}
-
-.btn-edit {
-    background: rgba(0, 255, 204, 0.1);
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    padding: 12px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.btn-del {
-    background: rgba(255, 77, 77, 0.1);
-    border: 1px solid var(--danger);
-    color: var(--danger);
-    padding: 12px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-/* Botão de Cálculo */
-.btn-calc {
-    width: 100%;
-    padding: 18px;
-    background: var(--primary);
-    color: #000;
-    border: none;
-    border-radius: 15px;
-    font-weight: 900;
-    font-size: 18px;
-    margin-top: 15px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
-}
-
-/* Resultado */
-.resultado-lista {
-    background: #000;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 25px;
-    border: 1px solid var(--primary);
-    display: none;
-}
-
-.res-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #222;
-    font-size: 14px;
-}
-
-#resTotalFinal {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px solid var(--primary);
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--primary);
-    text-align: center;
-}
-
-/* Modais (Adicionar/Editar) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background: var(--card);
-    padding: 30px;
-    border-radius: 25px;
-    border: 1px solid var(--primary);
-    width: 85%;
-    max-width: 350px;
-    text-align: center;
-}
-
-.btn-save {
-    width: 100%;
-    padding: 15px;
-    background: var(--primary);
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.btn-cancel {
-    background: none;
-    border: none;
-    color: var(--danger);
-    margin-top: 15px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* CORREÇÃO DEFINITIVA DO PDF - NÃO CORTA O VALOR */
 @media print {
-    @page { margin: 0; }
-    body { background: white !important; color: black !important; padding: 0; margin: 0; }
-    .app-container { 
-        border: none !important; 
-        box-shadow: none !important; 
-        width: 100% !important; 
-        max-width: none !important; 
-        background: white !important; 
-        padding: 10px !important;
-    }
-    /* Esconde tudo que não é o resultado */
-    .btn-calc, .btn-del, .btn-edit, select, input, .section-title, .modal, .row-ctrl, .btn-pdf { 
-        display: none !important; 
-    }
-    .resultado-lista { 
-        display: block !important; 
-        border: 2px solid black !important; 
-        background: white !important; 
-        color: black !important; 
-        width: 95% !important;
-        margin: 0 auto !important;
-    }
-    .res-item { border-bottom: 1px solid #ddd !important; }
-    #resTotalFinal { 
-        color: black !important; 
-        border-top: 2px solid black !important; 
-        font-size: 35px !important; 
-        margin-top: 10px !important;
-    }
-    .logo-img { filter: none !important; width: 140px !important; }
+    body { background: white !important; color: black !important; }
+    .app-container { border: none !important; width: 100% !important; max-width: none !important; background: white !important; }
+    .btn-calc, .btn-pdf, .btn-del, .btn-edit, select, input, .section-title, .modal, .row-ctrl { display: none !important; }
+    .resultado-lista { display: block !important; border: 2px solid black !important; background: white !important; color: black !important; width: 100% !important; }
+    .res-item { color: black !important; border-bottom: 1px solid #ccc !important; }
+    .resultado-lista h3 { color: black !important; }
+    #resTotalFinal { color: black !important; border-top: 2px solid black !important; font-size: 32px !important; }
 }
+
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.modal-content { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid var(--primary); width: 85%; max-width: 350px; text-align: center; }
+.btn-save { width: 100%; padding: 15px; background: var(--primary); border: none; border-radius: 10px; font-weight: bold; margin-top: 10px; }
+.btn-cancel { background: none; border: none; color: var(--danger); margin-top: 15px; cursor: pointer; }
