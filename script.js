@@ -6,7 +6,7 @@ const padrao = {
 
 let db = JSON.parse(localStorage.getItem('ag3d_v7')) || padrao;
 let tipoAtual = '';
-let itemEditando = null; // Para saber se estamos editando ou criando
+let itemEditando = null;
 
 window.onload = atualizar;
 
@@ -38,12 +38,10 @@ function selecionar(sid, did, t) {
     }
 }
 
-// NOVA FUNÇÃO: Prepara o modal com os dados atuais para editar
 function prepararEdicao(sid, t) {
     const s = document.getElementById(sid);
     const nome = s.options[s.selectedIndex].text;
     const valor = s.value;
-
     if(valor && valor !== "novo") {
         tipoAtual = t;
         itemEditando = nome;
@@ -51,9 +49,7 @@ function prepararEdicao(sid, t) {
         document.getElementById('novoNome').value = nome;
         document.getElementById('novoValor').value = valor;
         document.getElementById('modalNovo').style.display = 'flex';
-    } else {
-        alert("Selecione um item válido para editar!");
-    }
+    } else { alert("Selecione um item!"); }
 }
 
 function fecharModal() { document.getElementById('modalNovo').style.display = 'none'; }
@@ -62,10 +58,7 @@ function salvarNovo() {
     const n = document.getElementById('novoNome').value.trim();
     const v = document.getElementById('novoValor').value;
     if(n && v) {
-        // Se estávamos editando e o nome mudou, apaga o antigo
-        if(itemEditando && itemEditando !== n) {
-            delete db[tipoAtual][itemEditando];
-        }
+        if(itemEditando && itemEditando !== n) delete db[tipoAtual][itemEditando];
         db[tipoAtual][n] = parseFloat(v);
         localStorage.setItem('ag3d_v7', JSON.stringify(db));
         atualizar();
