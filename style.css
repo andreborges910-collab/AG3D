@@ -6,7 +6,7 @@
     --danger: #ff4d4d; 
 }
 
-/* --- CORREÇÃO DE LARGURA (IMPEDE ROLAGEM LATERAL) --- */
+/* --- TRAVA A LARGURA (ESSENCIAL PARA CELULAR) --- */
 body { 
     font-family: 'Segoe UI', Roboto, sans-serif; 
     background: var(--bg); 
@@ -15,7 +15,7 @@ body {
     margin: 0; 
     display: flex; 
     justify-content: center; 
-    overflow-x: hidden; /* TRAVA A TELA NA LARGURA CERTA */
+    overflow-x: hidden; /* Impede a tela de sambar pro lado */
 }
 
 .app-container { 
@@ -26,40 +26,41 @@ body {
     padding: 25px; 
     border: 1px solid rgba(0, 255, 204, 0.3); 
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    box-sizing: border-box; /* Garante que as bordas não aumentem a largura */
+    box-sizing: border-box; 
 }
 
-/* --- CABEÇALHO --- */
+/* --- CABEÇALHO (O SEGREDO DA LOGO JUNTINHA) --- */
 .logo-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-start; 
-    gap: 10px; 
+    gap: 8px; /* Texto colado na logo */
     padding-bottom: 20px;
     border-bottom: 2px solid var(--primary);
     margin-bottom: 25px;
-    white-space: nowrap; /* Mantém na mesma linha */
+    white-space: nowrap; /* OBRIGA a ficar na mesma linha */
+    overflow: hidden; /* Corta se tentar passar */
 }
 
 .logo-img {
-    width: 180px; /* Tamanho para PC */
+    width: 180px; 
     height: auto;
     display: block;
-    filter: drop-shadow(0 0 3px rgba(0, 255, 204, 0.3));
+    filter: drop-shadow(0 0 3px rgba(0, 255, 204, 0.3)); /* Neon suave */
 }
 
 .brand-text { display: flex; flex-direction: column; text-align: left; margin: 0; }
 
 .main-title {
-    font-size: 22px; /* Tamanho para PC */
+    font-size: 22px; 
     font-weight: 900;
     letter-spacing: 1px;
     color: var(--primary);
     margin: 0;
-    text-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.3); /* Neon suave */
 }
 
-/* --- INPUTS E BOTÕES --- */
+/* --- RESTO DO VISUAL (INPUTS, BOTÕES) --- */
 .section-title { 
     font-size: 11px; 
     color: var(--primary); 
@@ -99,7 +100,7 @@ select:focus, input:focus { border-color: var(--primary); }
     padding: 12px;
     border-radius: 12px;
     cursor: pointer;
-    flex-shrink: 0; /* Impede o botão de amassar no celular */
+    flex-shrink: 0; 
 }
 .btn-edit { background: rgba(0, 255, 204, 0.1); border: 1px solid var(--primary); color: var(--primary); }
 .btn-del { background: rgba(255, 77, 77, 0.1); border: 1px solid var(--danger); color: var(--danger); }
@@ -139,26 +140,24 @@ select:focus, input:focus { border-color: var(--primary); }
 .btn-save { width: 100%; padding: 15px; background: var(--primary); border-radius: 12px; font-weight: bold; border: none; margin-top: 10px; }
 .btn-cancel { background: none; border: none; color: var(--danger); margin-top: 15px; cursor: pointer; font-weight: bold; }
 
-/* --- AQUI ESTÁ A CORREÇÃO PARA O CELULAR --- */
+/* --- AJUSTE AUTOMÁTICO PARA CELULAR (RESPONSIVO) --- */
 @media (max-width: 480px) {
     .app-container {
-        padding: 15px; /* Reduz padding lateral */
+        padding: 15px;
         width: 100%;
-        border-radius: 0; /* Remove curvas extremas no mobile */
-        border-left: none;
-        border-right: none;
+        border-radius: 0; 
     }
     
     .logo-img {
-        width: 120px; /* DIMINUI A LOGO NO CELULAR */
+        width: 130px; /* Reduz a logo só no celular */
     }
 
     .main-title {
-        font-size: 18px; /* DIMINUI A FONTE NO CELULAR */
+        font-size: 18px; /* Reduz a letra só no celular */
     }
 
     .logo-wrapper {
-        gap: 8px; /* Junta mais */
+        gap: 5px; 
         justify-content: flex-start;
     }
 }
@@ -179,8 +178,8 @@ select:focus, input:focus { border-color: var(--primary); }
         border-bottom: 2px solid black !important;
         margin-bottom: 20px !important;
     }
-    .logo-img { filter: none !important; width: 140px !important; }
-    .main-title { color: black !important; text-shadow: none !important; }
+    .logo-img { filter: none !important; width: 140px !important; margin: 0 !important; }
+    .main-title { color: black !important; text-shadow: none !important; margin: 0 !important; }
 
     .resultado-lista { display: block !important; border: 2px solid black !important; background: white !important; color: black !important; width: 98% !important; margin: 0 auto !important; box-sizing: border-box !important; }
     .res-item { color: black !important; border-bottom: 1px solid #ccc !important; }
