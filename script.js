@@ -49,7 +49,7 @@ function prepararEdicao(sid, t) {
         document.getElementById('novoNome').value = nome;
         document.getElementById('novoValor').value = valor;
         document.getElementById('modalNovo').style.display = 'flex';
-    } else { alert("Selecione um item!"); }
+    } else { alert("Selecione um item válido!"); }
 }
 
 function fecharModal() { document.getElementById('modalNovo').style.display = 'none'; }
