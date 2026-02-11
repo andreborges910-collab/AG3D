@@ -20,48 +20,48 @@
             </div>
         </div>
 
-        <div class="section-title">1. Energia (Estado/kWh)</div>
+        <div class="section-title">1. Energia e Tempo</div>
         <select id="lEst" onchange="selecionar('lEst', 'vEstDisplay', 'estados')"></select>
         <div class="row-ctrl">
             <div id="vEstDisplay" class="val-display">R$ 0.00</div>
             <button class="btn-del" onclick="apagarItem('lEst', 'estados')">🗑️</button>
         </div>
+        <input type="number" id="tempo" placeholder="Tempo Total de Impressão (h)">
 
-        <div class="section-title">2. Máquina (Watts)</div>
+        <div class="section-title">2. Máquina e Manutenção</div>
         <select id="lMaq" onchange="selecionar('lMaq', 'vMaqDisplay', 'maquinas')"></select>
         <div class="row-ctrl">
             <div id="vMaqDisplay" class="val-display">0 W</div>
             <button class="btn-del" onclick="apagarItem('lMaq', 'maquinas')">🗑️</button>
         </div>
+        <input type="number" id="manutencao" placeholder="Custo de Manutenção/h (R$)">
 
-        <div class="section-title">3. Filamento (R$/kg)</div>
+        <div class="section-title">3. Filamento e Peso</div>
         <select id="lFil" onchange="selecionar('lFil', 'vFilDisplay', 'filamentos')"></select>
         <div class="row-ctrl">
             <div id="vFilDisplay" class="val-display">R$ 0.00</div>
             <button class="btn-del" onclick="apagarItem('lFil', 'filamentos')">🗑️</button>
         </div>
+        <input type="number" id="peso" placeholder="Peso Final da Peça (g)">
 
-        <div class="section-title">4. Dados da Impressão</div>
-        <input type="number" id="peso" placeholder="Peso (g) - Ex: 4.5">
-        <input type="number" id="tempo" placeholder="Tempo Total (h)">
-        <input type="number" id="manutencao" placeholder="Manut./h (R$)">
-        <input type="number" id="lucro" placeholder="Lucro (%) - Ex: 350">
+        <div class="section-title">4. Margem de Lucro (%)</div>
+        <input type="number" id="lucro" placeholder="Ex: 350">
 
-        <button class="btn-calc" onclick="calcular()">CALCULAR PREÇO</button>
+        <button class="btn-calc" onclick="calcular()">CALCULAR PREÇO DETALHADO</button>
 
         <div id="resultadoLista" class="resultado-lista">
-            <h3 style="text-align:center; color:white;">RESUMO</h3>
+            <h3 style="text-align:center; color:white;">DETALHAMENTO DE CUSTOS</h3>
             <div class="res-item"><span>Material:</span> <span id="resCustoFil"></span></div>
             <div class="res-item"><span>Energia:</span> <span id="resCustoEne"></span></div>
             <div class="res-item"><span>Manutenção:</span> <span id="resCustoMan"></span></div>
             <div id="resTotalFinal"></div>
-            <button class="btn-pdf" onclick="window.print()">📄 GERAR PDF</button>
+            <button class="btn-pdf" onclick="window.print()">📄 GERAR PDF COMPLETO</button>
         </div>
     </div>
 
     <div id="modalNovo" class="modal">
         <div class="modal-content">
-            <h2 id="modalTitle">ADICIONAR</h2>
+            <h2 id="modalTitle">ADICIONAR NOVO</h2>
             <input type="text" id="novoNome" placeholder="Nome">
             <input type="number" id="novoValor" step="0.001" placeholder="Valor">
             <button onclick="salvarNovo()" class="btn-save">SALVAR</button>
