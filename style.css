@@ -15,6 +15,7 @@ body {
     margin: 0; 
     display: flex; 
     justify-content: center; 
+    overflow-x: hidden; /* Impede rolagem horizontal na página inteira */
 }
 
 .app-container { 
@@ -25,27 +26,26 @@ body {
     padding: 25px; 
     border: 1px solid rgba(0, 255, 204, 0.3); 
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
 }
 
-/* --- CABEÇALHO (LOGO + TEXTO JUNTOS NO CANTO) --- */
+/* --- CABEÇALHO (LOGO + TEXTO LADO A LADO) --- */
 .logo-wrapper {
     display: flex;
     align-items: center;
-    /* MUDOU AQUI: Alinha para a esquerda (canto) */
-    justify-content: flex-start; 
-    /* MUDOU AQUI: Gap menor para juntar mais */
+    justify-content: flex-start; /* Alinhado à esquerda */
     gap: 8px; 
     padding-bottom: 20px;
     border-bottom: 2px solid var(--primary);
     margin-bottom: 25px;
-    white-space: nowrap;
+    white-space: nowrap; /* Mantém na mesma linha */
+    overflow: hidden; /* Corta se passar do limite, por segurança */
 }
 
 .logo-img {
-    width: 180px;
+    width: 180px; /* Tamanho padrão para PC/Tablet */
     height: auto;
     display: block;
-    /* Neon mais fraco na tela principal, como pedido antes */
     filter: drop-shadow(0 0 3px rgba(0, 255, 204, 0.3));
 }
 
@@ -62,7 +62,6 @@ body {
     letter-spacing: 1px;
     color: var(--primary);
     margin: 0;
-    /* Neon do texto */
     text-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
 }
 
@@ -93,12 +92,13 @@ select:focus, input:focus {
     border-color: var(--primary); 
 }
 
-/* Controles de Linha (Display, Lápis e Lixeira) */
+/* Controles de Linha */
 .row-ctrl { 
     display: flex; 
     gap: 10px;
     align-items: center; 
     margin-bottom: 15px; 
+    width: 100%; /* Garante que ocupe a largura disponível */
 }
 
 .val-display { 
@@ -110,9 +110,9 @@ select:focus, input:focus {
     font-weight: bold;
     border: 1px solid #333; 
     text-align: center; 
+    min-width: 0; /* Evita que o flexbox estoure */
 }
 
-/* Botões Lápis e Lixeira */
 .btn-edit {
     padding: 12px;
     background: rgba(0, 255, 204, 0.1);
@@ -120,6 +120,7 @@ select:focus, input:focus {
     color: var(--primary);
     border-radius: 12px;
     cursor: pointer;
+    flex-shrink: 0; /* Impede o botão de esmagar */
 }
 
 .btn-del { 
@@ -129,9 +130,9 @@ select:focus, input:focus {
     color: var(--danger); 
     border-radius: 12px; 
     cursor: pointer; 
+    flex-shrink: 0; /* Impede o botão de esmagar */
 }
 
-/* Botão CALCULAR */
 .btn-calc { 
     width: 100%; 
     padding: 20px; 
@@ -146,7 +147,6 @@ select:focus, input:focus {
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
 }
 
-/* Resultado */
 .resultado-lista { 
     background: #000; 
     border-radius: 20px; 
@@ -157,11 +157,7 @@ select:focus, input:focus {
     text-align: center;
 }
 
-.resultado-lista h3 {
-    margin-top: 0;
-    color: white;
-}
-
+.resultado-lista h3 { margin-top: 0; color: white; }
 .res-item { 
     display: flex; 
     justify-content: space-between; 
@@ -170,7 +166,6 @@ select:focus, input:focus {
     font-size: 14px; 
     color: #ddd;
 }
-
 #resTotalFinal { 
     margin-top: 15px; 
     padding-top: 15px; 
@@ -207,7 +202,6 @@ select:focus, input:focus {
     justify-content: center; 
     backdrop-filter: blur(5px); 
 }
-
 .modal-content { 
     background: var(--card); 
     padding: 30px; 
@@ -216,41 +210,49 @@ select:focus, input:focus {
     width: 85%; 
     max-width: 350px; 
     text-align: center; 
+    box-sizing: border-box;
+}
+.btn-save { width: 100%; padding: 15px; background: var(--primary); border-radius: 12px; font-weight: bold; border: none; margin-top: 10px; }
+.btn-cancel { background: none; border: none; color: var(--danger); margin-top: 15px; cursor: pointer; font-weight: bold; }
+
+/* --- AJUSTE PARA CELULAR (RESPONSIVIDADE) --- */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 15px; /* Diminui o padding para ganhar espaço */
+        border-radius: 20px;
+    }
+    
+    .logo-img {
+        width: 130px; /* Reduz a logo no celular para caber */
+    }
+
+    .main-title {
+        font-size: 18px; /* Reduz a fonte no celular para caber */
+    }
+
+    .logo-wrapper {
+        gap: 5px; /* Junta mais um pouquinho */
+    }
+
+    .val-display {
+        font-size: 14px;
+        padding: 12px;
+    }
 }
 
-.btn-save { 
-    width: 100%; 
-    padding: 15px; 
-    background: var(--primary); 
-    border-radius: 12px; 
-    font-weight: bold; 
-    border: none;
-    margin-top: 10px; 
-}
-
-.btn-cancel { 
-    background: none; 
-    border: none; 
-    color: var(--danger); 
-    margin-top: 15px; 
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* --- PDF (Garante que fiquem juntos na impressão também) --- */
+/* --- PDF --- */
 @media print {
     @page { margin: 10mm; size: auto; }
-    body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; }
+    body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
     .app-container { border: none !important; box-shadow: none !important; width: 100% !important; max-width: 100% !important; background: white !important; padding: 0 !important; margin: 0 !important; }
 
     .btn-calc, .btn-pdf, .btn-del, .btn-edit, select, input, .section-title, .modal, .row-ctrl { display: none !important; }
 
-    /* Força a união no PDF */
     .logo-wrapper {
         display: flex !important;
         align-items: center !important;
-        justify-content: flex-start !important; /* Canto esquerdo no PDF */
-        gap: 8px !important; /* Gap pequeno no PDF */
+        justify-content: flex-start !important;
+        gap: 8px !important;
         white-space: nowrap !important;
         border-bottom: 2px solid black !important;
         margin-bottom: 20px !important;
