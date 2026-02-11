@@ -1,12 +1,12 @@
 const padrao = {
     estados: { "AC":0.91,"AL":0.89,"AP":0.88,"AM":0.93,"BA":0.87,"CE":0.89,"DF":0.79,"ES":0.81,"GO":0.84,"MA":0.88,"MT":0.88,"MS":0.89,"MG":0.92,"PA":0.95,"PB":0.86,"PR":0.82,"PE":0.88,"PI":0.89,"RJ":1.05,"RN":0.87,"RS":0.84,"RO":0.91,"RR":0.88,"SC":0.78,"SP":0.85,"SE":0.87,"TO":0.92 },
     maquinas: { 
-        "Bambu A1":150, "Bambu A1 Mini":110, "P1S":200, "X1C":250, 
-        "Ender 3":120, "Kobra V3":160, "Adventurer 5M":220, "Neptune 4":180 
+        "Bambu A1":150, "Bambu A1 Mini":110, "P1S":200, "X1C":250,
+        "Ender 3":120, "Kobra V3":160, "Adventurer 5M":220, "Neptune 4":180
     },
     filamentos: { 
-        "Masterprint":105, "PLA Master":115, "PLA Prime":130, "Voolt3D":110, 
-        "Silk":150, "PETG XT":140, "ABS Tech":125 
+        "Masterprint":105, "PLA Voolt3D":110, "PLA 3D Prime":115, 
+        "PLA Esun":140, "PLA Premium":130
     }
 };
 
