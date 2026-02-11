@@ -13,34 +13,35 @@ let tipoAtual = '';
 window.onload = atualizar;
 
 function atualizar() {
-    pop('lEst', db.estados);
-    pop('lMaq', db.maquinas);
-    pop('lFil', db.filamentos);
+    pop('lEst', db.estados, 'estados');
+    pop('lMaq', db.maquinas, 'maquinas');
+    pop('lFil', db.filamentos, 'filamentos');
 }
 
-function pop(id, d) {
+function pop(id, d, t) {
     const s = document.getElementById(id);
-    s.innerHTML = '';
+    s.innerHTML = `<option value="">-- Selecionar --</option>`;
     for (let k in d) {
         let o = document.createElement('option');
         o.value = d[k]; o.text = k; s.add(o);
     }
+    s.innerHTML += `<option value="novo" style="color:var(--primary);">+ Adicionar Novo</option>`;
 }
 
-function selecionar(sid, did, dbK) {
-    const v = document.getElementById(sid).value;
-    document.getElementById(did).innerText = (dbK === 'maquinas') ? v + " W" : "R$ " + parseFloat(v).toFixed(2);
+function selecionar(sid, did, t) {
+    const s = document.getElementById(sid);
+    if(s.value === "novo") {
+        tipoAtual = t;
+        document.getElementById('modalTitle').innerText = t.toUpperCase();
+        document.getElementById('modalNovo').style.display = 'flex';
+        s.value = "";
+    } else {
+        document.getElementById(did).innerText = s.value ? 
+        (t === 'maquinas' ? s.value + " W" : "R$ " + parseFloat(s.value).toFixed(2)) : "---";
+    }
 }
 
-function abrirModal(t) { 
-    tipoAtual = t; 
-    document.getElementById('modalTitle').innerText = t.toUpperCase(); 
-    document.getElementById('modalNovo').style.display = 'flex'; 
-}
-
-function fecharModal() { 
-    document.getElementById('modalNovo').style.display = 'none'; 
-}
+function fecharModal() { document.getElementById('modalNovo').style.display = 'none'; }
 
 function salvarNovo() {
     const n = document.getElementById('novoNome').value;
@@ -56,12 +57,10 @@ function salvarNovo() {
 function apagarItem(sid, dbK) {
     const s = document.getElementById(sid);
     const n = s.options[s.selectedIndex].text;
-    if(confirm(`Apagar ${n}?`)) {
+    if(s.value && s.value !== "novo" && confirm(`Apagar ${n}?`)) {
         delete db[dbK][n];
         localStorage.setItem('ag3d_v7', JSON.stringify(db));
         atualizar();
-        const displayId = (sid === 'lEst') ? 'vEstDisplay' : (sid === 'lMaq') ? 'vMaqDisplay' : 'vFilDisplay';
-        document.getElementById(displayId).innerText = "---";
     }
 }
 
