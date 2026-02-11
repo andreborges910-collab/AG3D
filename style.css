@@ -27,23 +27,26 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* --- CABEÇALHO (LOGO + TEXTO LADO A LADO) --- */
+/* --- CABEÇALHO (LOGO + TEXTO JUNTOS NO CANTO) --- */
 .logo-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 15px; /* Espaço entre logo e texto */
+    /* MUDOU AQUI: Alinha para a esquerda (canto) */
+    justify-content: flex-start; 
+    /* MUDOU AQUI: Gap menor para juntar mais */
+    gap: 8px; 
     padding-bottom: 20px;
     border-bottom: 2px solid var(--primary);
     margin-bottom: 25px;
-    white-space: nowrap; /* O segredo para não quebrar linha */
+    white-space: nowrap;
 }
 
 .logo-img {
-    width: 180px; /* Travado em 180px como pediu */
+    width: 180px;
     height: auto;
-    filter: drop-shadow(0 0 5px rgba(0, 255, 204, 0.4));
     display: block;
+    /* Neon mais fraco na tela principal, como pedido antes */
+    filter: drop-shadow(0 0 3px rgba(0, 255, 204, 0.3));
 }
 
 .brand-text {
@@ -57,9 +60,10 @@ body {
     font-size: 22px;
     font-weight: 900;
     letter-spacing: 1px;
-    color: var(--primary); /* Verde Neon */
+    color: var(--primary);
     margin: 0;
-    text-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    /* Neon do texto */
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
 }
 
 /* Seções e Inputs */
@@ -108,7 +112,7 @@ select:focus, input:focus {
     text-align: center; 
 }
 
-/* Botão EDITAR (Lápis) */
+/* Botões Lápis e Lixeira */
 .btn-edit {
     padding: 12px;
     background: rgba(0, 255, 204, 0.1);
@@ -118,7 +122,6 @@ select:focus, input:focus {
     cursor: pointer;
 }
 
-/* Botão EXCLUIR (Lixeira) */
 .btn-del { 
     padding: 12px; 
     background: rgba(255, 77, 77, 0.1); 
@@ -190,7 +193,7 @@ select:focus, input:focus {
     cursor: pointer; 
 }
 
-/* Modais (Adicionar/Editar) */
+/* Modais */
 .modal { 
     display: none; 
     position: fixed; 
@@ -234,50 +237,30 @@ select:focus, input:focus {
     font-weight: bold;
 }
 
-/* --- CORREÇÃO DO PDF (Definitiva) --- */
+/* --- PDF (Garante que fiquem juntos na impressão também) --- */
 @media print {
-    @page {
-        margin: 10mm; /* Margem de segurança na folha */
-        size: auto;   
-    }
+    @page { margin: 10mm; size: auto; }
+    body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; }
+    .app-container { border: none !important; box-shadow: none !important; width: 100% !important; max-width: 100% !important; background: white !important; padding: 0 !important; margin: 0 !important; }
 
-    body {
-        background: white !important;
-        color: black !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
+    .btn-calc, .btn-pdf, .btn-del, .btn-edit, select, input, .section-title, .modal, .row-ctrl { display: none !important; }
 
-    .app-container {
-        border: none !important;
-        box-shadow: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        background: white !important;
-        padding: 0 !important;
-        margin: 0 !important;
+    /* Força a união no PDF */
+    .logo-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important; /* Canto esquerdo no PDF */
+        gap: 8px !important; /* Gap pequeno no PDF */
+        white-space: nowrap !important;
+        border-bottom: 2px solid black !important;
+        margin-bottom: 20px !important;
     }
+    .logo-img { filter: none !important; width: 150px !important; margin: 0 !important; }
+    .main-title { color: black !important; text-shadow: none !important; margin: 0 !important; }
 
-    /* Esconde tudo que não é o resultado ou logo */
-    .btn-calc, .btn-pdf, .btn-del, .btn-edit, select, input, .section-title, .modal, .row-ctrl { 
-        display: none !important; 
-    }
-
-    /* Ajusta a logo para impressão */
-    .logo-img { 
-        filter: none !important; 
-        width: 150px !important; /* Um pouco menor para caber bem */
-    }
-    .main-title { 
-        color: black !important; 
-        text-shadow: none !important; 
-    }
-    .logo-wrapper { border-bottom: 2px solid black !important; }
-
-    /* Ajusta a lista de resultados */
     .resultado-lista { 
         display: block !important; 
-        position: static !important; 
+        position: static !important;
         border: 2px solid black !important; 
         background: white !important; 
         color: black !important; 
@@ -285,17 +268,7 @@ select:focus, input:focus {
         margin: 20px auto !important; 
         box-sizing: border-box !important;
     }
-
-    .res-item { 
-        color: black !important; 
-        border-bottom: 1px solid #ccc !important; 
-    }
-    
+    .res-item { color: black !important; border-bottom: 1px solid #ccc !important; }
     .resultado-lista h3 { color: black !important; }
-
-    #resTotalFinal { 
-        color: black !important; 
-        border-top: 2px solid black !important; 
-        font-size: 24px !important;
-    }
+    #resTotalFinal { color: black !important; border-top: 2px solid black !important; font-size: 24px !important; }
 }
