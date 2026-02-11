@@ -7,7 +7,9 @@ body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--
 .logo-img { width: 180px; height: auto; }
 .logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding-bottom: 20px; border-bottom: 2px solid var(--primary); margin-bottom: 25px; }
 
-.main-title { font-size: 24px; font-weight: 900; color: white; }
+/* CORREÇÃO DA COR DO TÍTULO */
+.main-title { font-size: 24px; font-weight: 900; color: var(--primary); text-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
+
 .section-title { font-size: 11px; color: var(--primary); margin: 15px 0 5px 5px; text-transform: uppercase; font-weight: 900; }
 
 .row-ctrl { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
@@ -20,7 +22,7 @@ select, input { width: 100%; padding: 14px; border-radius: 12px; border: 1px sol
 
 .btn-calc { width: 100%; padding: 18px; background: var(--primary); color: #000; border: none; border-radius: 15px; font-weight: 900; font-size: 18px; margin-top: 10px; cursor: pointer; }
 
-.resultado-lista { background: #000; border-radius: 20px; padding: 20px; margin-top: 20px; border: 1px solid var(--primary); display: none; color: white; text-align: center; }
+.resultado-lista { background: #000; border-radius: 20px; padding: 20px; margin-top: 20px; border: 1px solid var(--primary); display: none; text-align: center; }
 .resultado-lista h3 { margin-top: 0; color: white; }
 .res-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px; color: #ddd; }
 #resTotalFinal { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--primary); font-size: 28px; font-weight: 900; color: var(--primary); }
