@@ -1,39 +1,32 @@
-:root { --primary: #00ffcc; --bg: #0d0d0d; --card: #1a1a1a; --text: #ffffff; --danger: #ff4d4d; }
+/* ... seu CSS anterior ... */
 
-body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 15px; margin: 0; display: flex; justify-content: center; }
-
-.app-container { width: 100%; max-width: 450px; background: var(--card); border-radius: 30px; padding: 25px; border: 1px solid rgba(0, 255, 204, 0.3); }
-
-/* Logo conforme pedido */
 .logo-img { width: 180px; height: auto; }
-.logo-wrapper { display: flex; align-items: center; justify-content: flex-start; gap: 15px; padding-bottom: 20px; border-bottom: 2px solid var(--primary); margin-bottom: 25px; }
 
-.main-title { font-size: 22px; font-weight: 900; color: white; }
-.section-title { font-size: 11px; color: var(--primary); margin: 15px 0 5px 5px; text-transform: uppercase; font-weight: 900; }
+.row-ctrl { display: flex; gap: 8px; align-items: center; margin-bottom: 15px; }
 
-.row-ctrl { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
-.val-display { flex-grow: 1; padding: 12px; background: #000; border-radius: 12px; color: var(--primary); font-weight: bold; border: 1px solid #333; text-align: center; }
-
-select, input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #444; background: #262626; color: white; margin-bottom: 12px; box-sizing: border-box; font-size: 16px; }
-
-.btn-del { background: #333; color: white; border: none; padding: 12px; border-radius: 12px; cursor: pointer; }
-.btn-calc { width: 100%; padding: 18px; background: var(--primary); color: #000; border: none; border-radius: 15px; font-weight: 900; font-size: 18px; margin-top: 10px; cursor: pointer; }
-
-.resultado-lista { background: #000; border-radius: 20px; padding: 20px; margin-top: 20px; border: 1px solid var(--primary); display: none; }
-.res-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
-
-#resTotalFinal { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--primary); font-size: 28px; font-weight: 900; color: var(--primary); text-align: center; }
-
-/* FIX PDF: Não corta o valor final */
-@media print {
-    body { background: white; color: black; }
-    .app-container { border: none; max-width: none; width: 100%; }
-    .btn-calc, .btn-pdf, .btn-del, select, input, .section-title, .modal { display: none !important; }
-    .resultado-lista { display: block !important; border: 2px solid black; background: white; color: black; position: absolute; top: 0; left: 0; width: 100%; }
-    #resTotalFinal { color: black !important; font-size: 35px !important; }
+.btn-edit { 
+    padding: 12px; 
+    background: rgba(0, 255, 204, 0.1); 
+    border: 1px solid var(--primary); 
+    color: var(--primary); 
+    border-radius: 12px; 
+    cursor: pointer; 
 }
 
-.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-.modal-content { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid var(--primary); width: 85%; max-width: 350px; text-align: center; }
-.btn-save { width: 100%; padding: 15px; background: var(--primary); border: none; border-radius: 10px; font-weight: bold; margin-top: 10px; }
-.btn-cancel { background: none; border: none; color: var(--danger); margin-top: 15px; cursor: pointer; }
+.btn-del { 
+    padding: 12px; 
+    background: rgba(255, 77, 77, 0.1); 
+    border: 1px solid var(--danger); 
+    color: var(--danger); 
+    border-radius: 12px; 
+    cursor: pointer; 
+}
+
+/* CORREÇÃO PDF MANTIDA */
+@media print {
+    body { background: white !important; color: black !important; }
+    .app-container { border: none !important; width: 100% !important; max-width: none !important; background: white !important; padding: 0 !important; }
+    .btn-calc, .btn-pdf, .btn-del, .btn-edit, select, input, .section-title, .modal, .row-ctrl { display: none !important; }
+    .resultado-lista { display: block !important; border: 2px solid black !important; background: white !important; color: black !important; width: 100% !important; }
+    #resTotalFinal { color: black !important; border-top: 2px solid black !important; font-size: 32px !important; }
+}
