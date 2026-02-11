@@ -5,8 +5,9 @@ const padrao = {
         "Ender 3":120, "Kobra V3":160, "Adventurer 5M":220, "Neptune 4":180
     },
     filamentos: { 
-        "Masterprint":105, "PLA Voolt3D":110, "PLA 3D Prime":115, 
-        "PLA Esun":140, "PLA Premium":130
+        "Masterprint":105, "Voolt3D":110, "3D Prime":115, "Esun":140, 
+        "Premium":130, "Creality":120, "Sunlu":125, "Flashforge":135,
+        "Hello3D":125, "GTMax":115
     }
 };
 
