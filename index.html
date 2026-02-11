@@ -8,7 +8,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="logo.png">
-    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
     <div class="app-container">
@@ -24,7 +23,6 @@
         <div class="section-title">1. Energia (Estado/kWh)</div>
         <select id="lEst" onchange="selecionar('lEst', 'vEstDisplay', 'estados')"></select>
         <div class="row-ctrl">
-            <button class="btn-add" onclick="abrirModal('estados')">+</button>
             <div id="vEstDisplay" class="val-display">R$ 0.00</div>
             <button class="btn-del" onclick="apagarItem('lEst', 'estados')">🗑️</button>
         </div>
@@ -32,7 +30,6 @@
         <div class="section-title">2. Máquina (Watts)</div>
         <select id="lMaq" onchange="selecionar('lMaq', 'vMaqDisplay', 'maquinas')"></select>
         <div class="row-ctrl">
-            <button class="btn-add" onclick="abrirModal('maquinas')">+</button>
             <div id="vMaqDisplay" class="val-display">0 W</div>
             <button class="btn-del" onclick="apagarItem('lMaq', 'maquinas')">🗑️</button>
         </div>
@@ -40,7 +37,6 @@
         <div class="section-title">3. Filamento (R$/kg)</div>
         <select id="lFil" onchange="selecionar('lFil', 'vFilDisplay', 'filamentos')"></select>
         <div class="row-ctrl">
-            <button class="btn-add" onclick="abrirModal('filamentos')">+</button>
             <div id="vFilDisplay" class="val-display">R$ 0.00</div>
             <button class="btn-del" onclick="apagarItem('lFil', 'filamentos')">🗑️</button>
         </div>
@@ -48,7 +44,7 @@
         <div class="section-title">4. Dados da Impressão</div>
         <input type="number" id="peso" placeholder="Peso (g) - Ex: 4.5">
         <input type="number" id="tempo" placeholder="Tempo Total (h)">
-        <input type="number" id="manutencao" placeholder="Custo Manut./h (R$)">
+        <input type="number" id="manutencao" placeholder="Manut./h (R$)">
         <input type="number" id="lucro" placeholder="Lucro (%) - Ex: 350">
 
         <button class="btn-calc" onclick="calcular()">CALCULAR PREÇO</button>
