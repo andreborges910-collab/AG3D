@@ -4,11 +4,28 @@ body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--
 
 .app-container { width: 100%; max-width: 450px; background: var(--card); border-radius: 30px; padding: 25px; border: 1px solid rgba(0, 255, 204, 0.3); }
 
-.logo-img { width: 180px; height: auto; }
-.logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding-bottom: 20px; border-bottom: 2px solid var(--primary); margin-bottom: 25px; }
+/* --- CABEÇALHO CORRIGIDO --- */
+.logo-wrapper { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 15px; 
+    padding-bottom: 20px; 
+    border-bottom: 2px solid var(--primary); 
+    margin-bottom: 25px; 
+    white-space: nowrap; /* Impede que o texto quebre linha */
+}
 
-/* CORREÇÃO DA COR DO TÍTULO */
-.main-title { font-size: 24px; font-weight: 900; color: var(--primary); text-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
+.logo-img { width: 180px; height: auto; }
+
+/* Texto na mesma linha da logo */
+.main-title { 
+    font-size: 22px; 
+    font-weight: 900; 
+    color: var(--primary); 
+    margin: 0; 
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
 
 .section-title { font-size: 11px; color: var(--primary); margin: 15px 0 5px 5px; text-transform: uppercase; font-weight: 900; }
 
