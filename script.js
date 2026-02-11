@@ -6,6 +6,7 @@ const padrao = {
 
 let db = JSON.parse(localStorage.getItem('ag3d_v7')) || padrao;
 let tipoAtual = '';
+let itemEditando = null; // Para saber se estamos editando ou criando
 
 window.onload = atualizar;
 
@@ -25,8 +26,9 @@ function pop(id, d, t) {
 function selecionar(sid, did, t) {
     const s = document.getElementById(sid);
     if(s.value === "novo") {
+        itemEditando = null;
         tipoAtual = t;
-        document.getElementById('modalTitle').innerText = t.toUpperCase();
+        document.getElementById('modalTitle').innerText = "ADICIONAR " + t.toUpperCase();
         document.getElementById('modalNovo').style.display = 'flex';
         s.value = "";
     } else {
@@ -36,18 +38,39 @@ function selecionar(sid, did, t) {
     }
 }
 
+// NOVA FUNÇÃO: Prepara o modal com os dados atuais para editar
+function prepararEdicao(sid, t) {
+    const s = document.getElementById(sid);
+    const nome = s.options[s.selectedIndex].text;
+    const valor = s.value;
+
+    if(valor && valor !== "novo") {
+        tipoAtual = t;
+        itemEditando = nome;
+        document.getElementById('modalTitle').innerText = "EDITAR " + nome;
+        document.getElementById('novoNome').value = nome;
+        document.getElementById('novoValor').value = valor;
+        document.getElementById('modalNovo').style.display = 'flex';
+    } else {
+        alert("Selecione um item válido para editar!");
+    }
+}
+
 function fecharModal() { document.getElementById('modalNovo').style.display = 'none'; }
 
 function salvarNovo() {
     const n = document.getElementById('novoNome').value.trim();
     const v = document.getElementById('novoValor').value;
     if(n && v) {
+        // Se estávamos editando e o nome mudou, apaga o antigo
+        if(itemEditando && itemEditando !== n) {
+            delete db[tipoAtual][itemEditando];
+        }
         db[tipoAtual][n] = parseFloat(v);
         localStorage.setItem('ag3d_v7', JSON.stringify(db));
         atualizar();
         fecharModal();
-        document.getElementById('novoNome').value = "";
-        document.getElementById('novoValor').value = "";
+        itemEditando = null;
     }
 }
 
